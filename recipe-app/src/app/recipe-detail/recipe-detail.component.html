@@ -1,0 +1,13 @@
+
+
+{{singleRecipe?.title}} <br>
+
+<img src="{{singleRecipe?.image}}"> <br><hr>
+
+<div *ngFor="let s of singleRecipe?.ingredients">
+  {{s}} <br><hr>
+</div>
+{{singleRecipe?.instructions}} <br>
+
+
+<h1>{{errormessage}}</h1>

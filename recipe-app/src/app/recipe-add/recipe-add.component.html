@@ -1,0 +1,54 @@
+<p>recipe-add works!</p>
+
+<h1>Add Recipe</h1>
+
+<form [formGroup]="form" (ngSubmit)="processForm()">
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td>
+        <input type="title" size="30" formControlName="title">
+      </td>
+    </tr>
+    <tr>
+      <td>image (as URL):</td>
+      <td>
+        <input type="text" size="30" formControlName="image">
+      </td>
+    </tr>
+    <tr>
+      <td>Instructions:</td>
+      <td>
+        <textarea cols="40" rows="3" formControlName="instructions"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>Ingredients:</td>
+      <button type="button" (click)="addIngredient()"> + </button><br>
+    </tr>
+
+        <div formArrayName="recipeArray">
+          <tr *ngFor="let ingredient of arr.controls;let i=index" >
+            <td>
+            <div [formGroupName]="i">
+            <input type="text" size="30" formControlName="ingredient"><br>
+            </div>
+              <button type="button" (click)="deleteIngredient(i)">remove</button><br>
+            </td><br>
+          </tr>
+
+        </div>
+
+
+
+    <tr>
+
+      <td>
+        <button type="button" [routerLink]="['']">back </button>
+        <button type="submit" [disabled]='!form.valid'>Save Recipe</button>
+        <!-- <button type="submit" >Save Recipe</button> -->
+      </td>
+    </tr>
+  </table>
+
+</form>
